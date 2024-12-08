@@ -12,4 +12,9 @@
     <string name="desc_friends">Connect with friends and \nMake new friends on Vibzz</string>
     <string name="finish">Finish</string>
     <string name="slide_image">Slide Image</string>
+    <string name="let_s_get_started">Let\'s Get Started</string>
+    <string name="join_us_now_connect_with_friends">Join Us Now\nConnect with Friends</string>
+    <string name="create_account">Create Account</string>
+    <string name="sign_in">Sign In</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>
