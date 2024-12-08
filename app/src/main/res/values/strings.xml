@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">Vibzz</string>
     <string name="app_logo">App Logo</string>
+    <string name="skip">Skip</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="title_profile">Create your profile</string>
+    <string name="desc_profile">Create your profile to \nmake sure you set to go!</string>
+    <string name="title_photos">Share Photos</string>
+    <string name="desc_photos">Share your photos with \nfriends and family.</string>
+    <string name="title_friends">Connect with friends</string>
+    <string name="desc_friends">Connect with friends and \nMake new friends on Vibzz</string>
+    <string name="finish">Finish</string>
+    <string name="slide_image">Slide Image</string>
 </resources>
