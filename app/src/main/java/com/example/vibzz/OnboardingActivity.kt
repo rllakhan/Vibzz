@@ -13,6 +13,9 @@ import androidx.core.text.HtmlCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager.widget.ViewPager
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class OnboardingActivity : AppCompatActivity() {
     private lateinit var btnSkip: Button
@@ -21,6 +24,7 @@ class OnboardingActivity : AppCompatActivity() {
     private lateinit var viewPager: ViewPager
     private lateinit var dotIndicator: LinearLayout
     private lateinit var viewPagerAdapter: ViewPagerAdapter
+    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -36,6 +40,8 @@ class OnboardingActivity : AppCompatActivity() {
         btnNext = findViewById(R.id.btnNextOnboarding)
         viewPager = findViewById(R.id.viewPager)
         dotIndicator = findViewById(R.id.dotIndicator)
+
+        firebaseAuth = Firebase.auth
 
         btnSkip.setOnClickListener {
             val intent = Intent(this@OnboardingActivity, GetStartedActivity::class.java)
@@ -116,4 +122,13 @@ class OnboardingActivity : AppCompatActivity() {
         return viewPager.currentItem + i
     }
 
+    override fun onStart() {
+        super.onStart()
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser != null) {
+            val intent = Intent(this@OnboardingActivity, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 }
