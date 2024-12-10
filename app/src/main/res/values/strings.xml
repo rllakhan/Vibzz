@@ -26,4 +26,9 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="reset_password">Reset Password</string>
     <string name="send">Send</string>
+    <string name="icon_sign_out">Icon Sign Out</string>
+    <string name="icon_add">Icon Add</string>
+    <string name="create_post">Create Post</string>
+    <string name="tweet">Tweet</string>
+    <string name="publish">Publish</string>
 </resources>
