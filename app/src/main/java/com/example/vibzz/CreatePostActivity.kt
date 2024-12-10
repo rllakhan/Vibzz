@@ -10,6 +10,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.core.SyncTree
@@ -17,6 +20,7 @@ import com.google.firebase.database.core.SyncTree
 class CreatePostActivity : AppCompatActivity() {
     private lateinit var etTextPostDescription: EditText
     private lateinit var btnPublish: Button
+    private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var databaseReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,7 @@ class CreatePostActivity : AppCompatActivity() {
         etTextPostDescription = findViewById(R.id.etTextPostDescription)
         btnPublish = findViewById(R.id.btnPublish)
 
+        firebaseAuth = Firebase.auth
         databaseReference = FirebaseDatabase.getInstance().getReference("tweets")
 
         btnPublish.setOnClickListener {
@@ -40,7 +45,7 @@ class CreatePostActivity : AppCompatActivity() {
             }
             if (tweetText.isNotEmpty()) {
                 val id = System.currentTimeMillis().toString()
-                val tweet = Tweet(id, tweetText)
+                val tweet = Tweet(id, tweetText, firebaseAuth.currentUser?.uid.toString())
                 databaseReference.child(id).setValue(tweet)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
